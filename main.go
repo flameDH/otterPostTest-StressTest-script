@@ -10,6 +10,8 @@ import (
 )
 
 var url = "http://127.0.0.1:9000/car/add"
+
+//var url = "http://127.0.0.1:9000/api/car"
 var brand = []string{"ford", "toyota", "mazda", "honda", "audi", "bmw", "benz"}
 var color = []string{"red", "black", "white", "blue", "green", "blue"}
 var city = []string{"taipei", "new taipei", "yilan", "kaohsiung", "taichung", "hsinchu", "taitung"}
@@ -28,11 +30,12 @@ func body() {
 	resp, err := client.Do(req)
 	if err != nil {
 		waitgroup.Done()
+	} else {
+		defer resp.Body.Close()
+		//body, _ := ioutil.ReadAll(resp.Body)
+		//fmt.Println("response Body:", string(body))
+		waitgroup.Done()
 	}
-	defer resp.Body.Close()
-	//body, _ := ioutil.ReadAll(resp.Body)
-	//fmt.Println("response Body:", string(body))
-	waitgroup.Done()
 }
 
 func getRand(len int) int {
@@ -43,7 +46,7 @@ func getRand(len int) int {
 }
 
 func main() {
-	len := 200
+	len := 1000
 
 	t1 := time.Now()
 	for i := 0; i < len; i++ {
