@@ -32,8 +32,6 @@ func body() {
 		waitgroup.Done()
 	} else {
 		defer resp.Body.Close()
-		//body, _ := ioutil.ReadAll(resp.Body)
-		//fmt.Println("response Body:", string(body))
 		waitgroup.Done()
 	}
 }
