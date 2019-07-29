@@ -9,8 +9,10 @@ import (
 	"time"
 )
 
+//for vertx
 var url = "http://127.0.0.1:9000/car/add"
 
+//for play
 //var url = "http://127.0.0.1:9000/api/car"
 var brand = []string{"ford", "toyota", "mazda", "honda", "audi", "bmw", "benz"}
 var color = []string{"red", "black", "white", "blue", "green", "blue"}
